@@ -1,0 +1,118 @@
+/* --- CSS Completo per Layout Avanzato --- */
+
+/* --- Reset e Font --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif; /* Un font più pulito per questo layout */
+}
+
+/* --- Contenitore Principale --- */
+.schermo {
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    color: white;
+    display: flex;
+    padding: 15px;
+    gap: 15px;
+    overflow: hidden;
+}
+
+/* --- 1. Barra Laterale Sinistra --- */
+.sidebar {
+    flex-basis: 25%; /* La sidebar occupa il 25% dello spazio */
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Spinge gli elementi agli estremi */
+    text-align: left;
+}
+
+.orologio {
+    font-size: 5vh;
+    font-weight: bold;
+}
+.orologio #data, .orologio #ora {
+    display: block; /* Mette data e ora su righe separate */
+}
+
+.titolo-sidebar .allerta-meteo {
+    color: #CC3333; /* Rosso */
+    font-size: 4vh;
+    font-weight: bold;
+}
+.titolo-sidebar .protez-civile {
+    font-size: 3.5vh;
+    font-weight: bold;
+}
+
+.footer-sidebar {
+    font-size: 2.5vh;
+    color: #ccc;
+}
+
+/* --- 2. Contenitore delle Allerte (colonna destra) --- */
+.contenitore-allerte {
+    flex-grow: 1; /* Occupa tutto lo spazio rimanente */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* --- Singolo Box Allerta --- */
+.evento {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex: 1; /* Divide lo spazio equamente tra le allerte */
+    overflow: hidden;
+}
+
+.icona-container {
+    height: 100%;
+    aspect-ratio: 1 / 1; /* Mantiene l'icona quadrata */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px; /* Bordi più arrotondati */
+    padding: 10px;
+    flex-shrink: 0;
+}
+
+.icona {
+    width: 100%;
+    height: 100%;
+    filter: brightness(0) invert(1); /* Icone da nere a bianche */
+}
+
+.testo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1.2;
+}
+
+/* --- Stili per le 3 righe di testo --- */
+.testo-primario, .testo-secondario, .testo-terziario {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.testo-primario { font-size: 3.5vh; }
+.testo-secondario { font-size: 3.5vh; color: white; }
+.testo-terziario { font-size: 3vh; color: #ccc; } /* Terza riga più piccola e grigia */
+
+/* --- Classi Colori (invariate) --- */
+.green { background-color: #00C853; } /* Verde più brillante */
+.yellow { background-color: #FFC400; }
+.orange { background-color: #FF9900; }
+.red { background-color: #CC3333; }
+.white { background-color: #333333; }
+
+.green-text { color: #00C853; }
+.yellow-text { color: #FFC400; }
+.orange-text { color: #FF9900; }
+.red-text { color: #CC3333; }
+.white-text { color: #CCCCCC; }
