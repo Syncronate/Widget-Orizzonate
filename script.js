@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- CONFIGURAZIONE ---
     const googleSheetCsvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQRYZz5cm8M6XWpz9aFh62Pw-2q-7pIpViKFV_Zv4qlJMWYTQwg2zMW9L1U_s3QfPdrQtNPvmD8cBUx/pub?gid=62264278&single=true&output=csv";
     
-    // *** MODIFICA APPLICATA QUI ***
     // Mostra queste 3 allerte in questo ordine
     const eventiDaMostrare = ['vento', 'mareggiate', 'neve'];
 
@@ -11,13 +10,14 @@ document.addEventListener('DOMContentLoaded', function() {
         "Verde": "green", "Nessuna": "green", "Bianca": "white"
     };
 
+    // Il percorso corretto "immagini/nomefile.svg" è definito qui
     const eventiInfo = {
-        'idrogeologica': { testo: 'RISCHIO IDROGEOLOGICO', dettaglio: 'FRANE VALANGHE', icona: 'idrogeologico.png' },
-        'idraulica':     { testo: 'RISCHIO IDRAULICO', dettaglio: 'ALLAGAMENTI', icona: 'idraulico.png' },
-        'temporali':     { testo: 'RISCHIO TEMPORALI', dettaglio: 'FULMINI GRANDINE', icona: 'temporali.png' },
-        'vento':         { testo: 'RISCHIO VENTO', dettaglio: 'RAFFICHE FORTI', icona: 'vento.png' },
-        'neve':          { testo: 'RISCHIO NEVE', dettaglio: 'ACCUMULI ABBONDANTI', icona: 'neve.png' },
-        'mareggiate':    { testo: 'RISCHIO MAREGGIATE', dettaglio: 'ONDE PERICOLOSE', icona: 'mareggiate.png' }
+        'idrogeologica': { testo: 'RISCHIO IDROGEOLOGICO', dettaglio: 'FRANE VALANGHE', icona: 'immagini/idrogeologico.svg' },
+        'idraulica':     { testo: 'RISCHIO IDRAULICO', dettaglio: 'ALLAGAMENTI', icona: 'immagini/idraulico.svg' },
+        'temporali':     { testo: 'RISCHIO TEMPORALI', dettaglio: 'FULMINI GRANDINE', icona: 'immagini/temporali.svg' },
+        'vento':         { testo: 'RISCHIO VENTO', dettaglio: 'RAFFICHE FORTI', icona: 'immagini/vento.svg' },
+        'neve':          { testo: 'RISCHIO NEVE', dettaglio: 'ACCUMULI ABBONDANTI', icona: 'immagini/neve.svg' },
+        'mareggiate':    { testo: 'RISCHIO MAREGGIATE', dettaglio: 'ONDE PERICOLOSE', icona: 'immagini/mareggiate.svg' }
     };
 
     // --- FUNZIONE OROLOGIO ---
@@ -28,11 +28,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const dataStr = `${now.getDate()} ${mesi[now.getMonth()]}`;
         const oraStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
         
-        document.getElementById('data').textContent = dataStr;
-        document.getElementById('ora').textContent = oraStr;
+        const dataElement = document.getElementById('data');
+        const oraElement = document.getElementById('ora');
+        if (dataElement) dataElement.textContent = dataStr;
+        if (oraElement) oraElement.textContent = oraStr;
     }
 
-    // --- FUNZIONE PRINCIPALE ---
+    // --- FUNZIONE PRINCIPALE PER LE ALLERTE ---
     async function caricaEVisualizzaAllerte() {
         try {
             const response = await fetch(googleSheetCsvUrl + '&_cacheBuster=' + new Date().getTime());
@@ -61,6 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const divEvento = document.createElement('div');
                 divEvento.className = 'evento'; 
                 
+                // Il tag img ora usa solo "${info.icona}", che contiene già il percorso completo.
                 divEvento.innerHTML = `
                     <div class="icona-container ${colore}">
                         <img src="${info.icona}" class="icona" alt="">
@@ -81,9 +84,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // --- ESECUZIONE ---
-    aggiornaOrologio();
-    setInterval(aggiornaOrologio, 60000);
+    aggiornaOrologio(); // Esegui l'orologio subito
+    setInterval(aggiornaOrologio, 60000); // Aggiorna l'orologio ogni minuto
 
-    caricaEVisualizzaAllerte();
-    setInterval(caricaEVisualizzaAllerte, 900000);
+    caricaEVisualizzaAllerte(); // Esegui le allerte subito
+    setInterval(caricaEVisualizzaAllerte, 900000); // Aggiorna le allerte ogni 15 minuti
 });
