@@ -7,13 +7,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Il contenitore principale ora si chiama "schermo" -->
+    <!-- Il contenitore principale che occupa tutto lo schermo -->
     <div class="schermo">
+        
         <!-- 1. BARRA LATERALE SINISTRA -->
         <div class="sidebar">
             <div class="orologio">
-                <span id="data">1 GEN</span>
-                <span id="ora">12:00</span>
+                <span id="data">CARICAMENTO</span>
+                <span id="ora">...</span>
             </div>
             <div class="titolo-sidebar">
                 <p class="allerta-meteo">ALLERTA METEO</p>
@@ -25,11 +26,11 @@
             </div>
         </div>
 
-        <!-- 2. CONTENITORE PER LE ALLERTE -->
+        <!-- 2. CONTENITORE PER LE ALLERTE (colonna destra) -->
         <div class="contenitore-allerte" id="container">
-            <!-- Le allerte verranno inserite qui dal JavaScript -->
-            <div class="loading">Caricamento...</div>
+            <div class="loading">Caricamento allerte...</div>
         </div>
+        
     </div>
 
     <script src="script.js"></script>
