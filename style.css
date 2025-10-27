@@ -30,7 +30,7 @@
     text-align: left;
 }
 
-.orologio { font-size: 5vh; font-weight: bold; }
+.orologio { font-size: 6.5vh; font-weight: bold; }
 .orologio #data, .orologio #ora { display: block; }
 .titolo-sidebar .allerta-meteo { color: #CC3333; font-size: 4vh; font-weight: bold; }
 .titolo-sidebar .protez-civile { font-size: 3.5vh; font-weight: bold; }
@@ -83,9 +83,9 @@
     font-weight: bold;
 }
 
-.testo-primario { font-size: 3.5vh; }
-.testo-secondario { font-size: 3.5vh; color: white; }
-.testo-terziario { font-size: 3vh; color: #ccc; }
+.testo-primario { font-size: 4.5vh; }
+.testo-secondario { font-size: 4.5vh; color: white; }
+.testo-terziario { font-size: 4vh; color: #ccc; }
 
 /* --- SEZIONE COLORI AGGIORNATA --- */
 
