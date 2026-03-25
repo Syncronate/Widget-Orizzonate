@@ -1,4 +1,4 @@
-/* --- CSS Completo per Layout Come da Screenshot --- */
+/* --- CSS Completo per Layout Corretto come da Screenshot --- */
 
 /* --- Reset e Stili Globali --- */
 * {
@@ -39,18 +39,18 @@
     display: block; 
 }
 
-/* Titolo ALLERTA METEO PROTEZ CIVILE */
+/* Titolo ALLERTA METEO PROTEZ CIVILE - Allineamento forzato a sinistra */
 .titolo-sidebar {
     display: flex;
     flex-direction: column;
+    align-items: flex-start; /* Nuovo: forzare l'allineamento a sinistra */
 }
 .titolo-sidebar .allerta-meteo { 
     color: #FF0000; /* Rosso acceso */
     font-size: 4.5vh; 
     font-weight: bold; 
     line-height: 1; 
-    width: 100px; /* Forza il testo ad andare a capo per fare "ALLERTA" e sotto "METEO" */
-    word-wrap: break-word;
+    /* Rimosso: width e word-wrap che causavano i problemi */
 }
 .titolo-sidebar .protez-civile { 
     font-size: 4.5vh; 
